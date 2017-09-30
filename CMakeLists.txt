@@ -13,7 +13,7 @@ ExternalProject_Add(fcl_src
 
 ExternalProject_Add_Step(fcl_src CopyToDevel
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/lib${PROJECT_NAME}.so
+    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
     DEPENDEES install
 )
 
@@ -31,6 +31,6 @@ install(
   DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
 install(
-  FILES ${CATKIN_DEVEL_PREFIX}/lib/lib${PROJECT_NAME}.so
+  FILES ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
