@@ -5,8 +5,10 @@ include(ExternalProject)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl/)
 ExternalProject_Add(fcl_src
-  GIT_REPOSITORY https://github.com/wxmerkt/fcl.git
-  GIT_TAG aca750433c6e694be29b141cf5b411324b2a6b24
+  # GIT_REPOSITORY https://github.com/wxmerkt/fcl.git
+  # GIT_TAG aca750433c6e694be29b141cf5b411324b2a6b24
+  URL https://github.com/wxmerkt/fcl/archive/master.zip
+  URL_MD5 7331834d61a115f7a0e13e9833777b18
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -FCL_BUILD_TESTS:BOOL=OFF #-DFCL_USE_HOST_NATIVE_ARCH:BOOL=ON
 )
