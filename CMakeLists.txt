@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(fcl_catkin)
 
+find_package(catkin REQUIRED)
 include(ExternalProject)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl/)
@@ -14,12 +15,11 @@ ExternalProject_Add(fcl_src
 )
 
 ExternalProject_Add_Step(fcl_src CopyToDevel
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
-    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
-    DEPENDEES install
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
+  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
+  DEPENDEES install
 )
 
-find_package(catkin REQUIRED)
 
 file(MAKE_DIRECTORY include/${PROJECT_NAME})
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
