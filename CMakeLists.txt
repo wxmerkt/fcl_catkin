@@ -12,12 +12,16 @@ ExternalProject_Add(fcl_src
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -FCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=OFF
 )
 
+# On some architectures the x86_64-linux-gnu prefix is added - check that
+if(EXISTS ${PROJECT_BINARY_DIR}/install/lib/${CMAKE_CXX_LIBRARY_ARCHITECTURE}/libfcl.so.0.6.0)
+  set(PREFIX "/${CMAKE_CXX_LIBRARY_ARCHITECTURE}")
+endif()
+
 ExternalProject_Add_Step(fcl_src CopyToDevel
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
-  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
+  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/${PREFIX}libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
   DEPENDEES install
 )
-
 
 file(MAKE_DIRECTORY include/${PROJECT_NAME})
 catkin_package(
