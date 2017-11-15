@@ -22,7 +22,7 @@ ExternalProject_Add_Step(fcl_src CopyToDevel
 
 file(MAKE_DIRECTORY include/${PROJECT_NAME})
 catkin_package(
-  INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME} ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
+  INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME}
   LIBRARIES libfcl.so.0.6
 )
 
