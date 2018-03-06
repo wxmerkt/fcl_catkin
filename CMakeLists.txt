@@ -4,12 +4,12 @@ project(fcl_catkin)
 find_package(catkin REQUIRED)
 include(ExternalProject)
 
-set(HOST_OPTIMIZATION ON)
+set(HOST_OPTIMIZATION OFF)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl/)
 ExternalProject_Add(fcl_src
-  GIT_REPOSITORY https://github.com/wxmerkt/fcl.git
-  GIT_TAG master
+  URL https://github.com/wxmerkt/fcl/archive/0.5.91.zip
+  URL_MD5 b10bcd4811d6cfc370a8ef257902e5c3
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -FCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=${HOST_OPTIMIZATION} -DCMAKE_INSTALL_LIBDIR=lib
 )
