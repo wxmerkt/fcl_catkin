@@ -22,8 +22,9 @@ ExternalProject_Add_Step(fcl_src CopyToDevel
 
 file(MAKE_DIRECTORY include/${PROJECT_NAME})
 # file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
+# Deactivated the INSTALL_PREFIX component on indigo to avoid issues when building without buildserver
 catkin_package(
-  INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME} ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
+  INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME} #${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
   LIBRARIES libfcl.so.0.6
 )
 
