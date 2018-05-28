@@ -22,9 +22,9 @@ ExternalProject_Add_Step(fcl_src CopyToDevel
 
 file(MAKE_DIRECTORY include/${PROJECT_NAME})
 # The following line is required for source builds but fatal on the ROS buildfarm
-file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
+# file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
 catkin_package(
-  INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME} ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME}
+  INCLUDE_DIRS include/${PROJECT_NAME}
   LIBRARIES libfcl.so.0.6
 )
 
