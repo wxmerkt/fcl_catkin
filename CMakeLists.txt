@@ -6,7 +6,6 @@ include(ExternalProject)
 
 set(HOST_OPTIMIZATION OFF)
 
-file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl/)
 ExternalProject_Add(fcl_src
   URL https://github.com/wxmerkt/fcl/archive/0.5.91.zip
   URL_MD5 b10bcd4811d6cfc370a8ef257902e5c3
@@ -20,7 +19,6 @@ ExternalProject_Add_Step(fcl_src CopyToDevel
   DEPENDEES install
 )
 
-file(MAKE_DIRECTORY include/${PROJECT_NAME})
 # The following line is required for source builds but fatal on the ROS buildfarm
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
 catkin_package(
