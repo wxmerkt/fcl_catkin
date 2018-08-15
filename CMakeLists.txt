@@ -7,8 +7,8 @@ include(ExternalProject)
 set(HOST_OPTIMIZATION OFF)
 
 ExternalProject_Add(fcl_src
-  URL https://github.com/wxmerkt/fcl/archive/0.5.93.zip
-  URL_MD5 6662e6879c3a8e6941381985645ffe60
+  URL https://github.com/wxmerkt/fcl/archive/0.5.94.zip
+  URL_MD5 a76af807873928db54ab7209c2f001d7
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -DFCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=${HOST_OPTIMIZATION} -DCMAKE_INSTALL_LIBDIR=lib
 )
