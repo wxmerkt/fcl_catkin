@@ -6,27 +6,33 @@ include(ExternalProject)
 
 set(HOST_OPTIMIZATION OFF)
 
-file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl/)
 ExternalProject_Add(fcl_src
-  URL https://github.com/wxmerkt/fcl/archive/0.5.92.zip
-  URL_MD5 196d581f6178b516c6d6ad9dc529b41c
+  URL https://github.com/wxmerkt/fcl/archive/0.5.94.zip
+  URL_MD5 a76af807873928db54ab7209c2f001d7
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -DFCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=${HOST_OPTIMIZATION} -DCMAKE_INSTALL_LIBDIR=lib
 )
-
 ExternalProject_Add_Step(fcl_src CopyToDevel
+  COMMENT "Copying to devel"
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
   COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.0 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
   DEPENDEES install
 )
 
-file(MAKE_DIRECTORY include/${PROJECT_NAME})
-# The following line is required for source builds but fatal on the ROS buildfarm
-# file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/include/${PROJECT_NAME})
-catkin_package(
-  INCLUDE_DIRS include/${PROJECT_NAME}
-  LIBRARIES libfcl.so.0.6
-)
+if(IS_DIRECTORY ${CMAKE_INSTALL_PREFIX})
+  message(WARNING "Compiling for install workspace (${CMAKE_INSTALL_PREFIX})")
+  catkin_package(
+    INCLUDE_DIRS include/${PROJECT_NAME}
+    LIBRARIES libfcl.so.0.6
+  )
+else()
+  message(WARNING "Compiling for devel workspace")
+  file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME})
+  catkin_package(
+    INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME}
+    LIBRARIES libfcl.so.0.6
+  )
+endif()
 
 install(
   DIRECTORY ${CATKIN_DEVEL_PREFIX}/include
