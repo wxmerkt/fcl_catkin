@@ -5,6 +5,7 @@ This package wraps the bleeding edge master branch of FCL - i.e. the not yet rel
 
 ## Versions
 
+- 0.5.95 - packages [``16c193a6ac938b0901fc5636926895834c386fa2``](https://github.com/flexible-collision-library/fcl/commit/16c193a6ac938b0901fc5636926895834c386fa2)
 - 0.5.94 - packages [``f15ffc21c9c0f6f6ab7d5369e8889ccbc59c2233``](https://github.com/flexible-collision-library/fcl/commit/f15ffc21c9c0f6f6ab7d5369e8889ccbc59c2233)
 - 0.5.93 - packages [``07c8480f70e4b5bfa15cb37b76fc5271d2502e82``](https://github.com/flexible-collision-library/fcl/commit/07c8480f70e4b5bfa15cb37b76fc5271d2502e82)
 - 0.5.92 - packages [``cd7a0c1fcb461b522f7f1a397c86fa964639462c``](https://github.com/flexible-collision-library/fcl/commit/cd7a0c1fcb461b522f7f1a397c86fa964639462c)
