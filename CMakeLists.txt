@@ -7,8 +7,8 @@ include(ExternalProject)
 set(HOST_OPTIMIZATION OFF)
 
 ExternalProject_Add(fcl_src
-  URL https://github.com/flexible-collision-library/fcl/archive/16c193a6ac938b0901fc5636926895834c386fa2.zip
-  URL_MD5 784f83efe6d2a838798c304f34303506
+  URL https://github.com/flexible-collision-library/fcl/archive/b2cf326426de5807b63d25e53243cdafc7a3b93a.zip
+  URL_MD5 0201a9b3d72c5b7b14c1c8a2ad300809
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -DFCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=${HOST_OPTIMIZATION} -DCMAKE_INSTALL_LIBDIR=lib
 )
@@ -20,13 +20,13 @@ ExternalProject_Add_Step(fcl_src CopyToDevel
 )
 
 if(IS_DIRECTORY ${CMAKE_INSTALL_PREFIX})
-  message(WARNING "Compiling for install workspace (${CMAKE_INSTALL_PREFIX})")
+  # message(WARNING "Compiling for install workspace (${CMAKE_INSTALL_PREFIX})")
   catkin_package(
     INCLUDE_DIRS include/${PROJECT_NAME}
     LIBRARIES libfcl.so.0.6
   )
 else()
-  message(WARNING "Compiling for devel workspace")
+  # message(WARNING "Compiling for devel workspace")
   file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME})
   catkin_package(
     INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME}
