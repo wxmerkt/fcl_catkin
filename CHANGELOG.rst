@@ -2,8 +2,8 @@
 Changelog for package fcl_catkin
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.6.0 (2020-02-10)
+------------------
 * Update to v0.6.0
 * Contributors: Wolfgang Merkt
 
