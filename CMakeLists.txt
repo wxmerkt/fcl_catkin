@@ -7,8 +7,8 @@ include(ExternalProject)
 set(HOST_OPTIMIZATION OFF)
 
 ExternalProject_Add(fcl_src
-  URL https://github.com/flexible-collision-library/fcl/archive/08d0bb25c290a4a5e713851d2a5ac514e4355801.zip
-  URL_MD5 40b7ee1ac1e3cc4f61e22059f4bbad78
+  URL https://github.com/flexible-collision-library/fcl/archive/v0.6.0.zip
+  URL_MD5 41101e4ba71b7159873d019e55af7081
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${PROJECT_BINARY_DIR}/install -DFCL_BUILD_TESTS:BOOL=OFF -DFCL_USE_HOST_NATIVE_ARCH:BOOL=OFF -DFCL_USE_X64_SSE:BOOL=${HOST_OPTIMIZATION} -DCMAKE_INSTALL_LIBDIR=lib
 )
