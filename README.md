@@ -1,7 +1,7 @@
-# fcl_catkin [![Build Status](https://travis-ci.org/wxmerkt/fcl_catkin.svg?branch=master)](https://travis-ci.org/wxmerkt/fcl_catkin)
+# fcl_catkin [![CI](https://github.com/wxmerkt/fcl_catkin/workflows/CI/badge.svg)](https://github.com/wxmerkt/fcl_catkin/actions?query=workflow%3ACI)
 Catkinized version of [FCL](https://github.com/flexible-collision-library/fcl).
 
-This package wraps the bleeding edge master branch of FCL - i.e. the not yet released 0.6.0. We use the >0.5.90 as the version number to indicate that a new upstream version has not yet been released.
+This package wraps the bleeding edge master branch of FCL - i.e. the not yet released 0.6.x/0.7.0. We use the >0.5.90 as the version number to indicate that a new upstream version has not yet been released.
 
 **Note:** To properly make use of recent bug fixes, please use a source installation of libccd v2.2.
 
