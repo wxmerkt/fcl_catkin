@@ -15,7 +15,7 @@ ExternalProject_Add(fcl_src
 ExternalProject_Add_Step(fcl_src CopyToDevel
   COMMENT "Copying to devel"
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_BINARY_DIR}/install/include/fcl ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/fcl
-  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.1 ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
+  COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/install/lib/libfcl.so.0.6.1 ${CATKIN_DEVEL_PREFIX}/lib/libfcl_catkin.so.0.6
   DEPENDEES install
 )
 
@@ -23,14 +23,14 @@ if(IS_DIRECTORY ${CMAKE_INSTALL_PREFIX})
   # message(WARNING "Compiling for install workspace (${CMAKE_INSTALL_PREFIX})")
   catkin_package(
     INCLUDE_DIRS include/${PROJECT_NAME}
-    LIBRARIES libfcl.so.0.6
+    LIBRARIES libfcl_catkin.so.0.6
   )
 else()
   # message(WARNING "Compiling for devel workspace")
   file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME})
   catkin_package(
     INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME} include/${PROJECT_NAME}
-    LIBRARIES libfcl.so.0.6
+    LIBRARIES libfcl_catkin.so.0.6
   )
 endif()
 
@@ -39,7 +39,6 @@ install(
   DESTINATION ${CMAKE_INSTALL_PREFIX}
 )
 install(
-  FILES ${CATKIN_DEVEL_PREFIX}/lib/libfcl.so.0.6
+  FILES ${CATKIN_DEVEL_PREFIX}/lib/libfcl_catkin.so.0.6
   DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
-
