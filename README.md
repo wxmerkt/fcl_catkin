@@ -5,6 +5,9 @@ This package wraps the bleeding edge master branch of FCL - i.e. the not yet rel
 
 **Note:** To properly make use of recent bug fixes, please use a source installation of libccd v2.2.
 
+## Known limitations
+- Installed files do not fully clean with make clean.
+
 ## Versions
 
 - 0.5.99 - packages [``08d0bb25c290a4a5e713851d2a5ac514e4355801``](https://github.com/flexible-collision-library/fcl/commit/08d0bb25c290a4a5e713851d2a5ac514e4355801)
